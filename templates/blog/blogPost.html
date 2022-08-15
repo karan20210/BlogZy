@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {%endblock%}
+
+{% block body %}
+<div class="col-md-12 center my-3">
+  <article class="blog-post">
+    <h2 class="blog-post-title mb-1">{{blog.title}}</h2>
+    <p class="blog-post-meta">{{blog.time}} by {{blog.author}}
+
+    {% autoescape off %}
+    {{blog.content}}
+    {% endautoescape %}
+  </article>
+</div>
+
+<hr width = "99%"> 
+
+<div class="col-md-12 my-3">
+  <h2> Comments ({{comments|length}})</h2>
+
+  <form method = "post" action = "/postComment/{{slug}}">
+    {% csrf_token %}
+    <div class="mb-3">      
+      <textarea name = "comment" rows = "1" cols = "80"  class="form-control" id="comment"> </textarea>           
+    <button type="submit" class="btn btn-primary my-3">Post Comment</button>
+  </form>
+
+  {% for i in comments %}
+  <div class = "row my-3">
+    <div class = "col-md-1"><b> {{i.user}} </b></div>
+    <div class = "col-md"> {{i.comment}} </div>
+</div>
+{% endfor %}
+
+{%endblock%}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {%endblock%}
+
+{%block homenav%} active {%endblock%}
+
+{%block css%}
+.jumbotron
+{
+  background-color: green;
+}
+{%endblock%}
+
+{% block body %}
+<div class = "container my-3">
+  <div class="col-md-12">
+    <div class="p-5 jumbotron rounded-5">
+      <h2>Welcome to BlogZy</h2>
+      <p class = "text">Get all world-famous blogs here</p>
+      <div class = "row">
+      <form action = "/blog">
+        <button class="btn btn-outline-light" type="submit">Read Blogs</button>        
+      </form>
+      <form action = "/admin/blog/blog/add/">
+        <button class="btn btn-outline-light mx-3" type="submit">Write Blog</button>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+{%endblock%}
